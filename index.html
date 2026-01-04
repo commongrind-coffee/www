@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Grind Coffee - Make Coffee Worth Talking About</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF8F3;
+            --dark: #1A0F0A;
+            --coffee-dark: #3D2817;
+            --coffee-mid: #8B6F47;
+            --gold: #C9A661;
+            --accent: #E8D4B8;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, var(--cream) 0%, #F5EFE6 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 166, 97, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero:after {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 111, 71, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 10vw, 120px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            color: var(--dark);
+            line-height: 0.95;
+        }
+
+        .hero .tagline {
+            font-size: clamp(20px, 3vw, 32px);
+            font-weight: 300;
+            color: var(--coffee-mid);
+            margin-bottom: 48px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero .domain {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(18px, 2.5vw, 28px);
+            color: var(--gold);
+            padding: 16px 32px;
+            border: 2px solid var(--gold);
+            border-radius: 60px;
+            margin-top: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .hero .domain:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(201, 166, 97, 0.3);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 20px;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(40px, 6vw, 72px);
+            font-weight: 600;
+            margin-bottom: 48px;
+            text-align: center;
+            color: var(--dark);
+            letter-spacing: -0.01em;
+        }
+
+        .section-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+            color: var(--coffee-dark);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        /* Introduction Section */
+        #introduction {
+            background: var(--cream);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 968px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        .intro-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 36px);
+            margin-bottom: 24px;
+            color: var(--coffee-dark);
+        }
+
+        .intro-text p {
+            font-size: 18px;
+            margin-bottom: 24px;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: var(--dark);
+            color: var(--accent);
+            padding: 60px;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight:before {
+            content: """;
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 200px;
+            color: rgba(201, 166, 97, 0.1);
+            top: -40px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .highlight p {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 300;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+            color: var(--cream);
+        }
+
+        .highlight strong {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Process Section */
+        #process {
+            background: linear-gradient(180deg, var(--cream) 0%, #F0E8DC 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .step {
+            background: white;
+            padding: 48px 36px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(26, 15, 10, 0.06);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .step:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 50px rgba(26, 15, 10, 0.12);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            line-height: 1;
+        }
+
+        .step h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            margin-bottom: 16px;
+            color: var(--coffee-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+        .step p {
+            font-size: 16px;
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .step ul {
+            list-style: none;
+            margin-top: 16px;
+        }
+
+        .step ul li {
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 15px;
+            color: var(--coffee-dark);
+        }
+
+        .step ul li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Gear Section */
+        #gear {
+            background: var(--dark);
+            color: var(--cream);
+        }
+
+        #gear .section-title {
+            color: var(--cream);
+        }
+
+        #gear .section-subtitle {
+            color: var(--accent);
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .gear-item {
+            background: rgba(250, 248, 243, 0.05);
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 166, 97, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .gear-item:hover {
+            background: rgba(250, 248, 243, 0.08);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+        }
+
+        .gear-item h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .gear-item p {
+            font-size: 15px;
+            color: var(--accent);
+            line-height: 1.6;
+        }
+
+        .bundle-offer {
+            background: linear-gradient(135deg, var(--coffee-mid) 0%, var(--coffee-dark) 100%);
+            padding: 60px;
+            border-radius: 16px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bundle-offer:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(201, 166, 97, 0.15) 0%, transparent 70%);
+        }
+
+        .bundle-offer h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--cream);
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bundle-offer p {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bundle-offer .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bundle-offer .price-note {
+            font-size: 14px;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        /* Signup Section */
+        #signup {
+            background: linear-gradient(180deg, #F0E8DC 0%, var(--cream) 100%);
+        }
+
+        .signup-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 80px 60px;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(26, 15, 10, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .signup-container {
+                padding: 60px 30px;
+            }
+        }
+
+        .signup-container h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        .signup-container .intro-text {
+            text-align: center;
+            font-size: 18px;
+            color: var(--coffee-mid);
+            margin-bottom: 48px;
+        }
+
+        .launch-date {
+            text-align: center;
+            background: var(--accent);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .launch-date p {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--coffee-dark);
+            font-weight: 600;
+        }
+
+        .launch-date span {
+            font-size: 16px;
+            color: var(--coffee-mid);
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 400;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--coffee-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            padding: 18px 24px;
+            font-size: 17px;
+            border: 2px solid #E5DFD4;
+            border-radius: 8px;
+            font-family: 'Work Sans', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+            box-shadow: 0 4px 20px rgba(201, 166, 97, 0.15);
+        }
+
+        button[type="submit"] {
+            padding: 22px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            font-family: 'Work Sans', sans-serif;
+            background: var(--dark);
+            color: var(--cream);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 12px;
+        }
+
+        button[type="submit"]:hover {
+            background: var(--coffee-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(26, 15, 10, 0.25);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(-1px);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--coffee-mid);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--accent);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 15px;
+        }
+
+        footer .domain {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Common Grind</h1>
+            <p class="tagline">Make coffee worth talking about</p>
+            <div class="domain">commongrind.coffee</div>
+        </div>
+    </div>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container">
+            <h2 class="section-title">What if your morning coffee could start a conversation?</h2>
+            <p class="section-subtitle">Coffee conversations break down without a baseline. Different gear, different methods, different beans—no common reference point. We change that.</p>
+            
+            <div class="intro-grid">
+                <div class="intro-text fade-in">
+                    <h3>The Problem</h3>
+                    <p>Coffee is deeply personal yet universally shared. But when everyone brews differently, meaningful comparison becomes impossible. Preferences masquerade as insights. Conversations stay surface-level.</p>
+                    <p>Without a shared reference point, we're all tasting in isolation.</p>
+                </div>
+                
+                <div class="highlight fade-in">
+                    <p><strong>Common Grind</strong> gives coffee enthusiasts what they've been missing: a shared experience anchored in a common reference point.</p>
+                    <p>Same beans. Same method. Same moment. Different discoveries.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 80px;" class="fade-in">
+                <div class="intro-text">
+                    <h3>How It Works</h3>
+                    <p>Every month, members receive three exceptional coffees from respected international roasters, each paired with a precise reference recipe. You make the baseline cup. You taste carefully. Then you experiment—adjusting one variable at a time—and share what you discover.</p>
+                    <p>This isn't about finding "the best" cup. It's about creating a common language for coffee exploration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <h2 class="section-title">Your Monthly Journey</h2>
+            <p class="section-subtitle">Each month follows a rhythm designed for exploration, experimentation, and genuine connection.</p>
+            
+            <div class="process-steps">
+                <div class="step fade-in">
+                    <div class="step-number">01</div>
+                    <h3>Shipment Arrives</h3>
+                    <p>Your box contains:</p>
+                    <ul>
+                        <li>Three curated coffees (50g each)</li>
+                        <li>Detailed recipe cards per coffee</li>
+                        <li>Grind range, ratio, temperature</li>
+                        <li>Pour structure & timing</li>
+                        <li>What to pay attention to</li>
+                    </ul>
+                </div>
+
+                <div class="step fade-in">
+                    <div class="step-number">02</div>
+                    <h3>Make the Reference</h3>
+                    <p>Week one: brew all three coffees following the recipes exactly. This creates your baseline—the shared experience that anchors all comparison.</p>
+                    <p>Taste carefully. Take notes. Notice the differences between origins, roasts, and processing methods.</p>
+                </div>
+
+                <div class="step fade-in">
+                    <div class="step-number">03</div>
+                    <h3>Experiment</h3>
+                    <p>Weeks 2-3: Now the real exploration begins. Adjust one variable at a time:</p>
+                    <ul>
+                        <li>Grind finer or coarser</li>
+                        <li>Change water temperature</li>
+                        <li>Adjust your ratio</li>
+                        <li>Vary pour technique</li>
+                    </ul>
+                    <p>Document what changes and why.</p>
+                </div>
+
+                <div class="step fade-in">
+                    <div class="step-number">04</div>
+                    <h3>Share & Discuss</h3>
+                    <p>Share your findings with the community. Reference the baseline before describing your changes. Compare notes. Debate. Learn.</p>
+                    <p>Week 4: Monthly virtual tasting where members discuss discoveries in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gear Section -->
+    <section id="gear">
+        <div class="container">
+            <h2 class="section-title">Required Gear</h2>
+            <p class="section-subtitle">No proprietary equipment needed. Just quality basics that eliminate variables and let the coffee speak.</p>
+            
+            <div class="gear-grid fade-in">
+                <div class="gear-item">
+                    <h4>Pour-Over Dripper</h4>
+                    <p>Ceramic V60 or similar cone dripper. Size 02 recommended. Consistent, repeatable, and accessible.</p>
+                </div>
+
+                <div class="gear-item">
+                    <h4>Hand Grinder or Electric</h4>
+                    <p>Capable of medium-fine grind settings. Manual (Timemore C2) or electric (Baratza Encore) both work.</p>
+                </div>
+
+                <div class="gear-item">
+                    <h4>Digital Scale</h4>
+                    <p>0.1g accuracy minimum. Built-in timer preferred. Essential for consistent ratios.</p>
+                </div>
+
+                <div class="gear-item">
+                    <h4>Gooseneck Kettle</h4>
+                    <p>Temperature control preferred. Allows precise pour control and consistency.</p>
+                </div>
+
+                <div class="gear-item">
+                    <h4>Filters</h4>
+                    <p>Paper filters matched to your dripper. We'll specify which for each month's recipes.</p>
+                </div>
+
+                <div class="gear-item">
+                    <h4>Timer</h4>
+                    <p>If your scale doesn't have one. Precision matters for replicable results.</p>
+                </div>
+            </div>
+
+            <div class="bundle-offer fade-in">
+                <h3>Founding Member Starter Bundle</h3>
+                <p>Don't have the gear? We've curated a complete kit with everything you need to start your journey.</p>
+                <div class="price">$185</div>
+                <p class="price-note">Includes: V60 dripper, Timemore C2 grinder, digital scale with timer, filters, and your first month's coffee shipment</p>
+                <p style="margin-top: 24px; font-size: 16px; color: var(--gold);">Available exclusively for March 2026 founding members</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Signup Section -->
+    <section id="signup">
+        <div class="container">
+            <div class="signup-container fade-in">
+                <h2>Reserve Your Spot</h2>
+                <p class="intro-text">Be among the first to experience shared coffee exploration.</p>
+                
+                <div class="launch-date">
+                    <p>First Shipments: March 2026</p>
+                    <span>Limited to 250 founding memberships</span>
+                </div>
+
+                <form class="signup-form" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <button type="submit">Join the Founding Members</button>
+                    
+                    <p class="form-note">$42/month • Cancel anytime • First shipment March 2026</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <span class="domain">commongrind.coffee</span>
+        <p>Make taste social again</p>
+        <p style="margin-top: 20px; opacity: 0.6;">&copy; 2026 Common Grind Coffee</p>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            
+            console.log('Founding Member Signup:', { name, email, date: new Date() });
+            
+            alert(`Welcome to Common Grind, ${name}! 🎉\n\nYou're now on the list for our March 2026 launch. We'll send you updates and early access details soon.\n\nGet ready to make coffee worth talking about.`);
+            event.target.reset();
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
